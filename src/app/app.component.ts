@@ -23,4 +23,9 @@ export class AppComponent implements OnInit {
     console.log("PERSONEL VERISI BACKEND TARAFINDAN ÇEIKILIYOR...");
   }
 
+  savePerson(){
+    console.log("Personel kayıt edildi.");
+    console.log(this.numberValue);
+  }
+
 }

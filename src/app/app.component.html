@@ -1,43 +1,33 @@
 <h1 class="dilek">{{ title }}</h1>
-
-
-<h2> PERSONEL VERİSİ</h2>
-<h3> {{ first_name }}</h3>
-<h3> {{ last_name }}</h3>
-<h3>{{ school_number }}</h3>
-
-<hr/>
-
-<button>KAYIT ET</button>
-<br/>
-<textarea></textarea>
-<br/>
-<input id="name" type="text">
-<br/>
-<input id="number" type="number">
-<br/>
-<input id="checkbox" type="checkbox">
-<br/>
+<h3> {{ first_name }} {{ last_name }}</h3>
 <hr/>
 
 
 <h2>PRİMEFACES COMPANENTS</h2>
-<p-button label="Success" severity="success"/>
-<br/>
-<br/>
-<p-inputnumber inputId="integeronly" [(ngModel)]="numberValue"></p-inputnumber>
-<br/>
+<p-button label="Success" severity="success" (click)="savePerson()"/>
 
-<br/>
-<br/>
-<p-floatlabel>
-  <input pInputText id="over_label" [(ngModel)]="overLabelValue" autocomplete="off"/>
-  <label for="over_label">İsim giriniz</label>
-</p-floatlabel>
+<div>
+  <h3>Text Number</h3>
+  <p-floatlabel>
+    <p-inputnumber id="number_id" inputId="integeronly" [(ngModel)]="numberValue" autocomplete="off"></p-inputnumber>
+    <label for="number_id">Sayı giriniz</label>
+  </p-floatlabel>
+</div>
 
-<br/>
-<br/>
-<p-floatlabel>
-  <textarea pTextarea id="over_label_area" [(ngModel)]="textAreaValue" rows="5" cols="30" style="resize: none" class="h-full"></textarea>
-  <label for="over_label">Açıklama</label>
-</p-floatlabel>
+<div>
+  <h3>İnput Text</h3>
+  <p-floatlabel>
+    <input pInputText id="over_label" [(ngModel)]="overLabelValue" autocomplete="off"/>
+    <label for="over_label">İsim giriniz</label>
+  </p-floatlabel>
+</div>
+
+<div>
+  <h3>Text Area</h3>
+  <p-floatlabel>
+    <textarea pTextarea id="over_label_area" [(ngModel)]="textAreaValue" rows="5" cols="30" style="resize: none"
+              class="h-full"></textarea>
+    <label for="over_label_area">Açıklama</label>
+  </p-floatlabel>
+</div>
+
