@@ -9,6 +9,8 @@ import {ButtonModule} from 'primeng/button';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {FormsModule} from '@angular/forms';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {InputText, InputTextModule} from "primeng/inputtext";
+import {FloatLabel} from 'primeng/floatlabel';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     AppRoutingModule,
     FormsModule,
     ButtonModule,
-    InputNumberModule
+    InputNumberModule,
+    InputTextModule,
+    FloatLabel,
   ],
   providers: [
     provideAnimationsAsync(),

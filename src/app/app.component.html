@@ -22,7 +22,22 @@
 
 
 <h2>PRİMEFACES COMPANENTS</h2>
-<p-button label="Success" severity="success" />
+<p-button label="Success" severity="success"/>
 <br/>
-<p-inputnumber inputId="integeronly" [(ngModel)]="school_number"></p-inputnumber>
+<br/>
+<p-inputnumber inputId="integeronly" [(ngModel)]="numberValue"></p-inputnumber>
+<br/>
 
+<br/>
+<br/>
+<p-floatlabel>
+  <input pInputText id="over_label" [(ngModel)]="overLabelValue" autocomplete="off"/>
+  <label for="over_label">İsim giriniz</label>
+</p-floatlabel>
+
+<br/>
+<br/>
+<p-floatlabel>
+  <textarea pTextarea id="over_label_area" [(ngModel)]="textAreaValue" rows="5" cols="30" style="resize: none" class="h-full"></textarea>
+  <label for="over_label">Açıklama</label>
+</p-floatlabel>

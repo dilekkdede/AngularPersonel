@@ -11,6 +11,10 @@ export class AppComponent implements OnInit {
   first_name: any = "Dilek";
   last_name: any = "Dede";
   school_number: any = null;
+  numberValue: any = null;
+  textValue: any = null;
+  overLabelValue:any = null;
+  textAreaValue:any = null;
 
   constructor() {
   }
