@@ -31,3 +31,121 @@
   </p-floatlabel>
 </div>
 
+<div>
+  <h3>Check Box</h3>
+  <p-checkbox [(ngModel)]="chechkBoxValue" [binary]="true"/>
+</div>
+
+<div>
+  <h3>Input group</h3>
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-user"></i>
+    </p-inputgroup-addon>
+    <input pInputText [(ngModel)]="inputGroup" placeholder="Kullanıcı adı giriniz"/>
+  </p-inputgroup>
+</div>
+
+<div>
+  <h3>List Box</h3>
+  <p-listbox [options]="listBox" [(ngModel)]="selectedCity" class="w-full md:w-56"/>
+</div>
+
+<div>
+  <h3>Password</h3>
+  <p-password [(ngModel)]="password" [feedback]="false"></p-password>
+</div>
+
+<div>
+  <h3>Select</h3>
+  <p-select [options]="listFood" [(ngModel)]="selectedFood" placeholder="Yemek seçiniz" class="w-full md:w-56"/>
+</div>
+
+<div>
+  <h3>Toogle Switch</h3>
+  <p-toggleswitch [(ngModel)]="checked"/>
+</div>
+
+<div>
+  <h3>Button Icon Only</h3>
+  <p-button icon="pi pi-heart" severity="help" (click)="kalpButonu()"></p-button>
+
+</div>
+
+<div>
+  <h3>Table-Pagination</h3>
+  <p-table
+    [value]="customers"
+    [paginator]="true"
+    [rows]="2"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[3, 6, 12]"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width:25%">Adı</th>
+        <th style="width:25%">Soyadı</th>
+        <th style="width:25%">Sehiri</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-customer>
+      <tr>
+        <td>{{ customer.first_name }}</td>
+        <td>{{ customer.last_name }}</td>
+        <td>{{ customer.city }}</td>
+
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div>
+  <h3>Table-Filter</h3>
+</div>
+
+<div>
+  <h3>Table-Row</h3>
+  <p-toggleswitch [(ngModel)]="checked" />
+  <p-table [value]="customers" selectionMode="single" [(selection)]="selectedCustomer"
+           dataKey="id" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+      <tr>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>Şehir</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-customer>
+      <tr [pSelectableRow]="customer">
+        <td>{{ customer.first_name }}</td>
+        <td>{{ customer.last_name }}</td>
+        <td>{{ customer.city }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div>
+  <h3>Card</h3>
+  <p-card header="Card Kullanımı">
+    <p class="m-0">
+      Lorem ipsum dolor sit amet...
+    </p>
+  </p-card>
+</div>
+<div>
+  <h3>DatePicker-Icon</h3>
+  <p-datepicker [(ngModel)]="date1" [showIcon]="true" [showOnFocus]="false" />
+
+  <p-datepicker [(ngModel)]="date2" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+
+  <p-datepicker [(ngModel)]="date3" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true">
+    <ng-template #inputicon let-clickCallBack="clickCallBack">
+      <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+    </ng-template>
+  </p-datepicker>
+</div>
+
+<div>
+  <h3>DatePicker Time</h3>
+</div>
