@@ -30,10 +30,15 @@ import {Dialog} from 'primeng/dialog';
 import {UIChart} from 'primeng/chart';
 import {InputMask} from 'primeng/inputmask';
 import {FileUpload} from 'primeng/fileupload';
+import {CalismalarComponent} from './Calismalar/calismalar.component';
+import {Ripple} from 'primeng/ripple';
+import {TabPanel} from 'primeng/tabview';
+import {Textarea} from 'primeng/textarea';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalismalarComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,9 @@ import {FileUpload} from 'primeng/fileupload';
     Toast,
     InputMask,
     FileUpload,
+    Ripple,
+    TabPanel,
+    Textarea,
 
 
   ],
