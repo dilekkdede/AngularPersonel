@@ -29,5 +29,8 @@
 
 
 --Butonlarla yap, üsüteni geleince buto kırmızı olsun, style de vers
+--companent üretme
+ng g component [Component Adı]
+
 
 

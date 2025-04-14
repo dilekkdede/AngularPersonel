@@ -35,6 +35,13 @@
   font-weight: bold;
 }
 
+.data {
+  position: absolute; /* Mutlak konumlandırma */
+  left: 11%;
+  font-size: 25px;
+  color: #6e6d6d;
+}
+
 /* Sol tarafta yer alan dikey menüyü */
 .menu {
   background-color: #1e1e2f;

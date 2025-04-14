@@ -33,11 +33,13 @@ import {CalismalarComponent} from './Calismalar/calismalar.component';
 import {Ripple} from 'primeng/ripple';
 import {TabPanel} from 'primeng/tabview';
 import {Textarea} from 'primeng/textarea';
+import { CityComponent } from './city/city.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalismalarComponent,
+    CityComponent,
   ],
   imports: [
     BrowserModule,
