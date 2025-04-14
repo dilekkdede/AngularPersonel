@@ -28,4 +28,6 @@
 21-ToastSeverity(+)
 
 
+--Butonlarla yap, üsüteni geleince buto kırmızı olsun, style de vers
+
 

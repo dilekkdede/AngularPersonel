@@ -14,4 +14,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  menuFunction() {
+    console.log("Buton tıklandı");
+  }
+
+
 }
+
