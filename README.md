@@ -32,5 +32,9 @@
 --companent üretme
 ng g component [Component Adı]
 
+1.adım ng g c compannate adımı ile compananet üret
+2.adım app-routing-module-ts de routuing tanımlamaları yap
+3.hrefte link yerlerine path yazılır
+
 
 

@@ -34,12 +34,22 @@ import {Ripple} from 'primeng/ripple';
 import {TabPanel} from 'primeng/tabview';
 import {Textarea} from 'primeng/textarea';
 import { CityComponent } from './city/city.component';
+import { AddressComponent } from './address/address.component';
+import { PersonelComponent } from './personel/personel.component';
+import { UnitComponent } from './unit/unit.component';
+import { ReportComponent } from './report/report.component';
+import { EducationComponent } from './education/education.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalismalarComponent,
     CityComponent,
+    AddressComponent,
+    PersonelComponent,
+    UnitComponent,
+    ReportComponent,
+    EducationComponent,
   ],
   imports: [
     BrowserModule,
