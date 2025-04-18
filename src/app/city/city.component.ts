@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import axios from 'axios';
+import {CityService} from '../services/city.service';
 
 // @ts-ignore
 
@@ -13,7 +14,7 @@ export class CityComponent implements OnInit {
   sehirler: any = [];
 
 
-  constructor() {
+  constructor(private cityService: CityService) {
   }
 
   ngOnInit(): void {
@@ -23,16 +24,11 @@ export class CityComponent implements OnInit {
 
   saveCity() {
     console.log("Şehirler ");
-    console.log(this.sehirler);
-
-
   }
 
   getData() {
-    axios.get('http://localhost:8080/rest/api/city/get-all').then((response) => {
-      this.sehirler = response.data;
-    }).catch(error => {
-
+    this.cityService.findAll().then(response => {
+      this.sehirler = response;
     });
   }
 

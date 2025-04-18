@@ -31,6 +31,9 @@
 --Butonlarla yap, üsüteni geleince buto kırmızı olsun, style de vers
 --companent üretme
 ng g component [Component Adı]
+->Servis üretme
+ng g s city-service
+
 
 1.adım ng g c compannate adımı ile compananet üret
 2.adım app-routing-module-ts de routuing tanımlamaları yap
@@ -38,4 +41,5 @@ ng g component [Component Adı]
 
 Kütüphaneler:
 ->npm install axios
+
 
