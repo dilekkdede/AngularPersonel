@@ -1,6 +1,10 @@
 <div class="header" style="color:darkblue">
   ŞEHİR LİSTESİ
   <p-button label="Success" severity="success" (click)="saveCity()"/>
+  <div class="islem">
+    <p-button icon="pi pi-plus" [rounded]="true" [text]="true" (click)="saveCity()l" severity="info"/>
+  </div>
+
 
 </div>
 
@@ -25,7 +29,7 @@
         <td>{{ city.name }}</td>
         <td>{{ city.code }}</td>
         <td>{{ city.status }}</td>
-        <td>{{ city.createDate}}</td>
+        <td>{{ city.createDate }}</td>
 
       </tr>
     </ng-template>
