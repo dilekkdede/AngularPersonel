@@ -36,5 +36,6 @@ ng g component [Component Adı]
 2.adım app-routing-module-ts de routuing tanımlamaları yap
 3.hrefte link yerlerine path yazılır
 
-
+Kütüphaneler:
+->npm install axios
 

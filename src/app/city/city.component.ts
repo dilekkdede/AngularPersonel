@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import axios from 'axios';
 
 // @ts-ignore
 
@@ -9,51 +10,30 @@ import {Component, OnInit} from '@angular/core';
   styleUrl: './city.component.css'
 })
 export class CityComponent implements OnInit {
+  sehirler: any = [];
+
+
   constructor() {
   }
 
   ngOnInit(): void {
+    this.getData(); // Başka sayfaya gittiğimizd dahi veriler kalsın diye burada çağırırız metotları
   }
 
-
-  customers = [
-    {
-      first_name: 'Ali',
-      last_name: 'Kara',
-      city: 'Ankara',
-    },
-    {
-      first_name: 'Dilek',
-      last_name: 'Dede',
-      city: 'Van',
-
-    },
-    {
-      first_name: 'Can',
-      last_name: 'Kabak',
-      city: 'Kocaeli',
-
-    },
-    {
-      first_name: 'Zeynep',
-      last_name: 'Hoş',
-      city: 'İstanbul',
-
-    },
-    {
-      first_name: 'Kerem',
-      last_name: 'Çatma',
-      city: 'Sivas',
-
-    }
-  ];
-
-  sehirler:any= [];
 
   saveCity() {
     console.log("Şehirler ");
     console.log(this.sehirler);
+
+
   }
 
+  getData() {
+    axios.get('http://localhost:8080/rest/api/city/get-all').then((response) => {
+      this.sehirler = response.data;
+    }).catch(error => {
+
+    });
+  }
 
 }

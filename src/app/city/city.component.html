@@ -6,24 +6,26 @@
 
 <div class="tablo">
   <p-table
-    [value]="customers"
+    [value]="sehirler"
     [paginator]="true"
-    [rows]="2"
+    [rows]="10"
     [tableStyle]="{ 'min-width': '100rem' }"
     [rowsPerPageOptions]="[2, 4, 8]"
   >
     <ng-template #header>
       <tr>
-        <th style="width:25%">Adı</th>
-        <th style="width:25%">Soyadı</th>
-        <th style="width:25%">Sehiri</th>
+        <th style="width:25%">Şehir</th>
+        <th style="width:25%">Kod</th>
+        <th style="width:25%">Durum</th>
+        <th style="width:25%">Oluşturma Tarihi</th>
       </tr>
     </ng-template>
-    <ng-template #body let-customer>
+    <ng-template #body let-city>
       <tr>
-        <td>{{ customer.first_name }}</td>
-        <td>{{ customer.last_name }}</td>
-        <td>{{ customer.city }}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.code }}</td>
+        <td>{{ city.status }}</td>
+        <td>{{ city.createDate}}</td>
 
       </tr>
     </ng-template>
