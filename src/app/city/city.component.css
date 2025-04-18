@@ -1,0 +1,12 @@
+
+.header {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.tablo {
+  margin: 0px;
+  height: 100%;
+  display: flex;
+  position: fixed;
+}

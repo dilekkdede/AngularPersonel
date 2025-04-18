@@ -39,6 +39,7 @@ import { PersonelComponent } from './personel/personel.component';
 import { UnitComponent } from './unit/unit.component';
 import { ReportComponent } from './report/report.component';
 import { EducationComponent } from './education/education.component';
+import {ImageModule} from 'primeng/image';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { EducationComponent } from './education/education.component';
     Ripple,
     TabPanel,
     Textarea,
+    ImageModule
 
 
   ],
