@@ -19,8 +19,11 @@ export class CityService {
 
   }
 
-  save(city: any) {
-    console.log(city);
+  async save(city: any) {
+    const response = await axios.post(this.baseUrl + '/city/save', city).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
 
   findById(id: number) {

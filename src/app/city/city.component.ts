@@ -10,11 +10,14 @@ import {CityService} from '../services/city.service';
   styleUrl: './city.component.css'
 })
 export class CityComponent implements OnInit {
+  //NgModule sadece input yapılan companentlerde kullanılır. Button gibi companentlerde kullanılmaz.
+  //Biz HtML içinde kullandığımız herhangi bir input companentin value değerini ts tarafına NgModule ile taşırız
+  //Tüm bu işlemlere de DataBinding denir
+  //Aslında böyle yaparak dışarıdan girilen inputları elimizde tuttuk . CityCode ya atayarak vb.
   sehirler: any = [];
-
   visible: boolean = false;
-
-
+  cityName: any = null;
+  cityCode: any = null;
 
   showDialog() {
     this.visible = true;
@@ -34,13 +37,29 @@ export class CityComponent implements OnInit {
 
 
   saveCity() {
-    console.log("Şehirler ");
+    const city = {
+      "id": null,
+      "name": this.cityName,
+      "code": this.cityCode,
+    }
+
+    this.cityService.save(city).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    })
+
+    console.log(city);
   }
 
   getData() {
     this.cityService.findAll().then(response => {
       this.sehirler = response;
     });
+  }
+
+  cancel() {
+    this.visible = false;
   }
 
 }
