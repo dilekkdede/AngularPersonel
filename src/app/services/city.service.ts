@@ -13,7 +13,7 @@ export class CityService {
 
   async findAll() {
     const response = await axios.get(this.baseUrl + '/city/get-all').then(function (response) {
-      return response.data;
+      return response.data.data;
     })
     return response;
 

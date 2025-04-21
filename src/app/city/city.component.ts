@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CityService} from '../services/city.service';
+import {MessageService} from 'primeng/api';
 
 // @ts-ignore
 
@@ -21,10 +22,12 @@ export class CityComponent implements OnInit {
 
   showDialog() {
     this.visible = true;
+    this.cityName = null;
+    this.cityCode = null;
   }
 
 
-  constructor(private cityService: CityService) {
+  constructor(private cityService: CityService, private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -44,6 +47,16 @@ export class CityComponent implements OnInit {
     }
 
     this.cityService.save(city).then(response => {
+
+      if (response.status === 201) {
+        this.visible = false;
+        this.getData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Başarılı bir şekilde kayıt yapıldı'
+        })
+      }
       console.log(response);
     }).catch(error => {
       console.log(error);
