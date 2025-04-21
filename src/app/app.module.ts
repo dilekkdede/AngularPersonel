@@ -40,6 +40,7 @@ import { UnitComponent } from './unit/unit.component';
 import { ReportComponent } from './report/report.component';
 import { EducationComponent } from './education/education.component';
 import {ImageModule} from 'primeng/image';
+import {StyleClassModule} from 'primeng/styleclass';
 
 @NgModule({
   declarations: [
@@ -81,8 +82,6 @@ import {ImageModule} from 'primeng/image';
     TabPanel,
     Textarea,
     ImageModule
-
-
   ],
   providers: [
     MessageService,

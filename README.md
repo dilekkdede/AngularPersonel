@@ -40,7 +40,7 @@ Kütüphaneler:
 ->npm install axios
 
 -->Günün ödevi:
-1-Backend kısmında tüm controllerdeki metotlar için log yazılacak.log.info("şehir listesi çekildi");
+1-Backend kısmında tüm controllerdeki metotlar için log yazılacak.log.info("şehir listesi çekildi"); (+)
 2-Unit(Birimleri) City ile aynı şekilde oluştur
 3-+ butpnu en sağa yaslanacak
 bunların hepsi unitte de olacak

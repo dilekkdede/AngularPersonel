@@ -1,1 +1,34 @@
-<p>unit works!</p>
+<div class="header" style="color:darkblue">
+  UNİT LİSTESİ
+  <p-button class="btn-islem" icon="pi pi-plus" title="Yeni Kayıt" [rounded]="true" [text]="true" (click)="openDialog()"
+            severity="info"/>
+</div>
+
+
+<div class="tablo">
+  <p-table
+    [value]="birimler"
+    [paginator]="true"
+    [rows]="10"
+    [tableStyle]="{ 'min-width': '100rem' }"
+    [rowsPerPageOptions]="[2, 4, 8]"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width:25%">ID</th>
+        <th style="width:25%">Adı</th>
+        <th style="width:25%">Kod</th>
+        <th style="width:25%">Oluşturma Tarihi</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-unit>
+      <tr>
+        <td>{{ unit.id }}</td>
+        <td>{{ unit.name }}</td>
+        <td>{{ unit.code }}</td>
+        <td>{{ unit.createDate }}</td>
+
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
