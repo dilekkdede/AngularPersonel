@@ -12,12 +12,24 @@ import {CityService} from '../services/city.service';
 export class CityComponent implements OnInit {
   sehirler: any = [];
 
+  visible: boolean = false;
+
+
+
+  showDialog() {
+    this.visible = true;
+  }
+
 
   constructor(private cityService: CityService) {
   }
 
   ngOnInit(): void {
     this.getData(); // Başka sayfaya gittiğimizd dahi veriler kalsın diye burada çağırırız metotları
+  }
+
+  openDialog(): void {
+    console.log('openDialog');
   }
 
 
