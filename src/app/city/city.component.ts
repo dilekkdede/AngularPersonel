@@ -88,7 +88,20 @@ export class CityComponent implements OnInit {
   }
 
   deleteCity(city: any) {
-    console.log(city);
+    this.cityService.delete(city.id).then(response => {
+      if (response.status === 200) {
+        this.visible = false;
+        this.getData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Kayıt silindi'
+        })
+
+      }
+    }).catch(error => {
+      console.log(error);
+    })
   }
 
   editCity(city: any) {

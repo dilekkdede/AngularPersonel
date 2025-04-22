@@ -30,9 +30,13 @@ export class CityService {
     console.log(id);
   }
 
-  delete(id: number) {
-    console.log(id);
+  async delete(id: number) {
+    const response = await axios.delete(this.baseUrl + '/city/delete/' + id).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
+
 
   async update(id: number, city: any) {
     const response = await axios.put(this.baseUrl + '/city/update/' + id, city).then(function (response) {
