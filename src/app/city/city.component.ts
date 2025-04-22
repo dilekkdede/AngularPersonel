@@ -15,12 +15,16 @@ export class CityComponent implements OnInit {
   //Biz HtML içinde kullandığımız herhangi bir input companentin value değerini ts tarafına NgModule ile taşırız
   //Tüm bu işlemlere de DataBinding denir
   //Aslında böyle yaparak dışarıdan girilen inputları elimizde tuttuk . CityCode ya atayarak vb.
+  //Ngİf -> ile html tagları içersinde companentlere koşullar yazılabiliyor. javadaki if else yapısı gibi
   sehirler: any = [];
   visible: boolean = false;
   cityName: any = null;
   cityCode: any = null;
+  cityId: any = null;
+  isEditButton: boolean = false;
 
   showDialog() {
+    this.isEditButton = false;
     this.visible = true;
     this.cityName = null;
     this.cityCode = null;
@@ -87,7 +91,49 @@ export class CityComponent implements OnInit {
     console.log(city);
   }
 
+  editCity(city: any) {
+    //Edit metodu tamamen setlemeye yarıyor (postmandeki body ekranı diyebiliriz)
+    this.isEditButton = true;
+    this.visible = true;
+    this.cityName = city.name;
+    this.cityCode = city.code;
+    this.cityId = city.id;
+  }
+
+
   updateCity() {
+    this.visible = true;
+
+    const city = {
+      "id": this.cityId,
+      "name": this.cityName,
+      "code": this.cityCode,
+    }
+
+    this.cityService.update(this.cityId, city).then(response => {
+
+      if (response.status === 200) {
+        this.visible = false;
+        this.getData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Başarılı bir şekilde güncellendi'
+        })
+      }
+      if (response.status === 400) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Başarısız',
+          detail: response.message
+        })
+      }
+    }).catch(error => {
+      console.log(error);
+
+    })
+
+    console.log(city);
 
   }
 

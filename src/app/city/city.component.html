@@ -20,7 +20,9 @@
     </div>
     <div style="float:right;">
       <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
-      <p-button [style]="{ margin:'2rem'}" label="KAYDET" (onClick)="saveCity()"/>
+      <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveCity() ">KAYDET</p-button>
+      <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateCity()"> GÜNCELLE</p-button>
+
     </div>
   </p-dialog>
 
@@ -56,7 +58,7 @@
         </td>
 
         <td>
-          <p-button icon="pi pi-pencil" (click)="updateCity()" severity="secondary" rounded
+          <p-button icon="pi pi-pencil" (click)="editCity(city)" severity="secondary" rounded
                     title="Düzenle"/>
         </td>
 

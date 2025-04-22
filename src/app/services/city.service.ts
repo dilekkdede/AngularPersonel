@@ -34,7 +34,10 @@ export class CityService {
     console.log(id);
   }
 
-  update(id: number, city: any) {
-    console.log(city);
+  async update(id: number, city: any) {
+    const response = await axios.put(this.baseUrl + '/city/update/' + id, city).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
 }
