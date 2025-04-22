@@ -20,7 +20,7 @@
     </div>
     <div style="float:right;">
       <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
-      <p-button [style]="{ margin:'2rem'}" label="KAYDET"  (onClick)="saveCity()"/>
+      <p-button [style]="{ margin:'2rem'}" label="KAYDET" (onClick)="saveCity()"/>
     </div>
   </p-dialog>
 
@@ -49,6 +49,16 @@
         <td>{{ city.code }}</td>
         <td>{{ city.status }}</td>
         <td>{{ city.createDate }}</td>
+
+        <td style="padding-left: 3px; padding-right:5px">
+          <p-button icon="pi pi-trash" (click)="deleteCity(city)" severity="secondary"
+                    rounded title="Sil"/>
+        </td>
+
+        <td>
+          <p-button icon="pi pi-pencil" (click)="updateCity()" severity="secondary" rounded
+                    title="Düzenle"/>
+        </td>
 
       </tr>
     </ng-template>

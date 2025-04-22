@@ -44,3 +44,9 @@ Kütüphaneler:
 2-Unit(Birimleri) City ile aynı şekilde oluştur
 3-+ butpnu en sağa yaslanacak
 bunların hepsi unitte de olacak
+
+--> Günün görevleri
+1-Backend Tüm servisler için BaseResponse yazılacak (+)
+2-Data da her satırın sonunda birer buton olacak. Güncelleme(pencil) ve silme butonları(trash)-->(PrimeNg de Table companentş içinde column başlığı)
+3-Backendte save için city adı ve namesi boş geçilmeyecek. BaseResponse uyarı verecek. Ardından onu fornten de catch bloğu içine ekle
+4-İstenlen özellikler yoksa kayıt gerçekleşmesin 

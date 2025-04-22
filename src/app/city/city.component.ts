@@ -57,9 +57,17 @@ export class CityComponent implements OnInit {
           detail: 'Başarılı bir şekilde kayıt yapıldı'
         })
       }
-      console.log(response);
+      if (response.status === 400) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Başarısız',
+          detail: response.message
+        })
+      }
+      //  console.log(response);
     }).catch(error => {
       console.log(error);
+
     })
 
     console.log(city);
@@ -74,5 +82,14 @@ export class CityComponent implements OnInit {
   cancel() {
     this.visible = false;
   }
+
+  deleteCity(city: any) {
+    console.log(city);
+  }
+
+  updateCity() {
+
+  }
+
 
 }
