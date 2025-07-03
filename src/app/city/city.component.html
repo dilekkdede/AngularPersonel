@@ -50,15 +50,15 @@
         <td>{{ city.name }}</td>
         <td>{{ city.code }}</td>
         <td>{{ city.status }}</td>
-        <td>{{ city.createDate }}</td>
+        <td>{{ city.createDate | date: 'MM/dd/yyyy HH:mm' }}</td>
 
         <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-trash" (click)="deleteCity(city)" severity="secondary"
+          <p-button icon="pi pi-trash" (click)="deleteCity(city)" severity="danger"
                     rounded title="Sil"/>
         </td>
 
         <td>
-          <p-button icon="pi pi-pencil" (click)="editCity(city)" severity="secondary" rounded
+          <p-button icon="pi pi-pencil" (click)="editCity(city)" severity="info" rounded
                     title="Düzenle"/>
         </td>
 

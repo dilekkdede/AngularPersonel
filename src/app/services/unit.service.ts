@@ -13,26 +13,35 @@ export class UnitService {
 
   async findAll() {
     //axios: API çağrısı yapmak için kullanılan bir kütüphanedir
-
     const response = await axios.get(this.baseUrl + '/unit/get-all').then(function (response) {
-      return response.data;
+      return response.data.data;
     })
     return response;
   }
 
-  save(unit: any) {
-    console.log(unit);
+  async save(unit: any) {
+    const response = await axios.post(this.baseUrl + '/unit/save', unit).then(function (response) {
+      return response.data;
+    })
+    return response;
+
   }
 
   findById(id: number) {
     console.log(id);
   }
 
-  deleteById(id: number) {
-    console.log(id);
+  async delete(id: number) {
+    const response = await axios.delete(this.baseUrl + '/unit/delete/' + id).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
 
-  update(id: number, unit: any) {
-    console.log(unit);
+  async  update(id: number, unit: any) {
+    const response = await axios.put(this.baseUrl + '/unit/update/' + id, unit).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
 }

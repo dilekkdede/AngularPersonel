@@ -43,6 +43,7 @@ export class CityComponent implements OnInit {
   }
 
 
+
   saveCity() {
     const city = {
       "id": null,
@@ -125,7 +126,7 @@ export class CityComponent implements OnInit {
 
     this.cityService.update(this.cityId, city).then(response => {
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         this.visible = false;
         this.getData();
         this.messageService.add({

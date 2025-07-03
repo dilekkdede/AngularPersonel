@@ -41,6 +41,7 @@ import { ReportComponent } from './report/report.component';
 import { EducationComponent } from './education/education.component';
 import {ImageModule} from 'primeng/image';
 import {StyleClassModule} from 'primeng/styleclass';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import {StyleClassModule} from 'primeng/styleclass';
     Ripple,
     TabPanel,
     Textarea,
-    ImageModule
+    ImageModule,
+    ScrollPanelModule
   ],
   providers: [
     MessageService,
