@@ -42,6 +42,7 @@ import { EducationComponent } from './education/education.component';
 import {ImageModule} from 'primeng/image';
 import {StyleClassModule} from 'primeng/styleclass';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     TabPanel,
     Textarea,
     ImageModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    DropdownModule
   ],
   providers: [
     MessageService,

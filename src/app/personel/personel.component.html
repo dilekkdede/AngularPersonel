@@ -50,24 +50,35 @@
     <br/>
     <div>
       <p-floatlabel>
-        <input [style]="{ width: '100%' }" id="Address" pInputText [(ngModel)]="personAdres_id"/>
-        <label for="Address">Adres</label>
+        <input [style]="{ width: '100%' }" id="adres" pInputText [(ngModel)]="personAdres_id"/>
+        <label for="adres">adres</label>
       </p-floatlabel>
+
     </div>
     <br/>
     <div>
       <p-floatlabel>
-        <input [style]="{ width: '100%' }" id="Sehir" pInputText [(ngModel)]="personCity_id"/>
-        <label for="Sehir">Şehir</label>
+        <p-dropdown
+          [options]="cities"
+          [(ngModel)]="personCity_id"
+          optionLabel="name"
+          optionValue="id"
+          placeholder="şehir seç"
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+
       </p-floatlabel>
     </div>
     <br/>
-    <div>
-      <p-floatlabel>
-        <input [style]="{ width: '100%' }" id="Unit" pInputText [(ngModel)]="personUnit_id"/>
-        <label for="Unit">Birimi</label>
-      </p-floatlabel>
-    </div>
+
+    <p-dropdown
+      [options]="units"
+      [(ngModel)]="personUnit_id"
+      optionLabel="name"
+      optionValue="id"
+      placeholder="Birim Seç"
+      [style]="{ width: '100%' }"
+    />
     <div style="float:right;">
       <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
       <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="save() ">KAYDET</p-button>
@@ -84,7 +95,7 @@
       [paginator]="true"
       [rows]="10"
       [tableStyle]="{ 'min-width': '100rem' }"
-      [rowsPerPageOptions]="[2, 4, 8]">
+      [rowsPerPageOptions]="[8, 12, 16]">
       <ng-template #header>
         <tr>
           <th style="width:25%; color:#2f2f47">Adı</th>
