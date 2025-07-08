@@ -21,7 +21,7 @@
 /* Ortadaki başlık stilini belirler */
 .orta {
   position: absolute; /* Mutlak konumlandırma */
-  left: 30%;
+  left: 35%;
   font-size: 25px;
   color: #6e6d6d;
 }
@@ -34,12 +34,16 @@
 .sag {
   font-weight: bold;
 }
-
 .data {
-  position: absolute; /* Mutlak konumlandırma */
-  left: 11%;
+  position: absolute;
+  top: 55px; /* Başlık yüksekliği kadar yukarıdan başlasın */
+  left: 10%; /* Menü genişliği kadar soldan başlasın */
+  right: 0;
+  bottom: 0;
+  padding: 10px;
   font-size: 25px;
   color: #6e6d6d;
+  overflow: auto; /* İçerik taşarsa kaydırılabilir */
 }
 
 /* Sol tarafta yer alan dikey menüyü */

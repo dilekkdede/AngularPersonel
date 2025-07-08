@@ -7,17 +7,18 @@ import {AddressComponent} from './address/address.component';
 import {EducationComponent} from './education/education.component';
 import {ReportComponent} from './report/report.component';
 import {PersonelComponent} from './personel/personel.component';
+import {MainComponent} from './main/main.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'app', pathMatch: 'full'}, //default route
-  {path: 'app', component: AppComponent},
-  {path: 'app/city', component: CityComponent},
-  {path: 'app/unit', component: UnitComponent},
-  {path: 'app/address', component: AddressComponent},
-  {path: 'app/education', component: EducationComponent},
-  {path: 'app/report', component: ReportComponent},
-  {path: 'app/personel', component: PersonelComponent},
-
+  { path: '', component: MainComponent }, // default component MainComponent oldu
+  { path: 'app', component: AppComponent },
+  { path: 'app/city', component: CityComponent },
+  { path: 'app/unit', component: UnitComponent },
+  { path: 'app/address', component: AddressComponent },
+  { path: 'app/education', component: EducationComponent },
+  { path: 'app/report', component: ReportComponent },
+  { path: 'app/personel', component: PersonelComponent },
+  { path: 'app/main', component: MainComponent },
 ];
 
 

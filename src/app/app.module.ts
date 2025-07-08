@@ -26,7 +26,7 @@ import {TabsModule} from 'primeng/tabs';
 import {Toast} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {Dialog} from 'primeng/dialog';
-import {UIChart} from 'primeng/chart';
+import {ChartModule, UIChart} from 'primeng/chart';
 import {InputMask} from 'primeng/inputmask';
 import {FileUpload} from 'primeng/fileupload';
 import {CalismalarComponent} from './Calismalar/calismalar.component';
@@ -43,6 +43,8 @@ import {ImageModule} from 'primeng/image';
 import {StyleClassModule} from 'primeng/styleclass';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DropdownModule} from 'primeng/dropdown';
+import { MainComponent } from './main/main.component';
+import {Splitter, SplitterModule} from 'primeng/splitter';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {DropdownModule} from 'primeng/dropdown';
     UnitComponent,
     ReportComponent,
     EducationComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,10 @@ import {DropdownModule} from 'primeng/dropdown';
     Textarea,
     ImageModule,
     ScrollPanelModule,
-    DropdownModule
+    DropdownModule,
+    TabsModule,
+    SplitterModule,
+    ChartModule,
   ],
   providers: [
     MessageService,
