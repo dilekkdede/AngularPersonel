@@ -41,15 +41,15 @@ export class PersonelService {
   }
 
   async countByUnit() {
-    const response = await axios.get(this.baseUrl + '/personel/countByUnit').then(function (response) {
-      return response.data.data;
-    });
+    const response = await axios.get(this.baseUrl + '/personel/countByUnit');
+    return response.data.data;
+
   }
 
+
   async countByCity() {
-    const response = await axios.get(this.baseUrl + '/personel/countByCity').then(function (response) {
-      return response.data.data;
-    });
+    const response = await axios.get(this.baseUrl + '/personel/countByCity');
+    return response.data.data;
   }
 
 }

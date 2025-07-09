@@ -4,7 +4,16 @@
   <ng-template #panel>
     <p-splitter [style]="{ height: '100%', width: '100%' }" layout="horizontal">
       <ng-template #panel>
-        <div class="flex items-center justify-center h-full font-bold">Panel 1</div>
+
+        <div class="card" style="height: 100%;">
+          <p-chart
+            type="bar"
+            [data]="basicData"
+            [options]="basicOptions"
+            style="width: 100%; height: 100%;"          >
+          </p-chart>
+        </div>
+
       </ng-template>
       <ng-template #panel>
         <div class="flex items-center justify-center h-full font-bold">Panel 2</div>
