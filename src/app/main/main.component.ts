@@ -11,6 +11,8 @@ export class MainComponent implements OnInit {
 
   basicData: any;
   basicOptions: any;
+  data: any;
+  options: any;
 
 
   async ngOnInit() {
@@ -26,7 +28,18 @@ export class MainComponent implements OnInit {
         {
           label: 'Personel Sayısı',
           data: data,
-          backgroundColor: '#42A5F5',
+          backgroundColor: [
+            '#FF6384', // Pembe
+            '#36A2EB', // Mavi
+            '#FFCE56', // Sarı
+            '#4BC0C0', // Turkuaz
+            '#9966FF', // Mor
+            '#FF9F40', // Turuncu
+            '#C9CBCF', // Açık gri
+            '#00A36C', // Zümrüt yeşili
+            '#FF6F61', // Mercan kırmızısı
+            '#D4E157'  // Açık sarı-yeşil
+          ],
         }
       ]
     };
@@ -59,6 +72,70 @@ export class MainComponent implements OnInit {
         },
       },
     };
+
+
+    const cityCounts: any[] = await this.personelService.countByCity();
+
+    const labels2 = cityCounts.map(item => item.name);
+    const data2 = cityCounts.map(item => item.personSize);
+
+
+    this.data = {
+      labels:labels2,
+      datasets: [
+        {
+          data: data2,
+          backgroundColor: [
+            '#FF6384', // Pembe
+            '#36A2EB', // Mavi
+            '#FFCE56', // Sarı
+            '#4BC0C0', // Turkuaz
+            '#9966FF', // Mor
+            '#FF9F40', // Turuncu
+            '#C9CBCF', // Açık gri
+            '#00A36C', // Zümrüt yeşili
+            '#FF6F61', // Mercan kırmızısı
+            '#D4E157'  // Açık sarı-yeşil
+          ],
+          hoverBackgroundColor: [
+            '#FF6384', // Pembe
+            '#36A2EB', // Mavi
+            '#FFCE56', // Sarı
+            '#4BC0C0', // Turkuaz
+            '#9966FF', // Mor
+            '#FF9F40', // Turuncu
+            '#C9CBCF', // Açık gri
+            '#00A36C', // Zümrüt yeşili
+            '#FF6F61', // Mercan kırmızısı
+            '#D4E157'  // Açık sarı-yeşil
+          ]
+        }
+      ]
+    };
+
+    this.options = {
+      responsive: true,
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#495057'
+        }
+      },
+      plugins: {
+        datalabels: {
+          display: true,
+          color: '#fff'
+        }
+      },
+      title: {
+        display: true,          // Başlık gösterilsin
+        text: 'Şehir Bazlı Personel Dağılımı', // Başlık metni
+        font: {
+          size: 18
+        }
+      }
+    };
+
   }
 
   constructor(private personelService: PersonelService) {

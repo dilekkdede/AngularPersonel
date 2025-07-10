@@ -1,22 +1,33 @@
 <p-splitter [style]="{ height: '100%', width: '100%' }" layout="vertical">
   <!-- Üst Yarım -->
 
+
   <ng-template #panel>
     <p-splitter [style]="{ height: '100%', width: '100%' }" layout="horizontal">
       <ng-template #panel>
 
-        <div class="card" style="height: 100%;">
+        <div>
           <p-chart
             type="bar"
             [data]="basicData"
             [options]="basicOptions"
-            style="width: 100%; height: 100%;"          >
+            width="800"
+            height="380"
+          >
           </p-chart>
         </div>
-
       </ng-template>
       <ng-template #panel>
-        <div class="flex items-center justify-center h-full font-bold">Panel 2</div>
+
+        <div>
+          <p-chart type="pie"
+                   [data]="data"
+                   [options]="options"
+                   width="700"
+                   height="370"
+
+          />
+        </div>
       </ng-template>
     </p-splitter>
   </ng-template>
