@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UnitService} from '../services/unit.service';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-unit',
@@ -18,7 +18,7 @@ export class UnitComponent implements OnInit {
   unitCode: any = null;
 
 
-  constructor(private unitService: UnitService, private messageService: MessageService) {
+  constructor(private unitService: UnitService, private messageService: MessageService,private confirmationService: ConfirmationService) {
     //Dependcy Injection işlemi yapıldı. Yazmış olduğumuz servisin kullanılabilir hale gelmesi
   }
 
@@ -82,8 +82,8 @@ export class UnitComponent implements OnInit {
   }
 
 
-  deleteUnit(unit: any) {
-    this.unitService.delete(unit.id).then(response => {
+  deleteUnit(unitId:any) {
+    this.unitService.delete(unitId).then(response => {
       if (response.status === 200) {
         this.visible = false;
         this.getData();
@@ -97,6 +97,31 @@ export class UnitComponent implements OnInit {
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  confirmDelete(event: Event, unitId: any) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'silmek istediğinize emin misiniz!',
+      header: 'Danger Zone',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'İptal',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Evet',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.deleteUnit(unitId);
+      },
+      reject: () => {
+      },
+    });
   }
 
   editUnit(unit: any) {

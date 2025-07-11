@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CityService} from '../services/city.service';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 // @ts-ignore
 
@@ -116,7 +116,7 @@ export class CityComponent implements OnInit {
   }
 
 
-  constructor(private cityService: CityService, private messageService: MessageService) {
+  constructor(private cityService: CityService, private messageService: MessageService, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -173,8 +173,8 @@ export class CityComponent implements OnInit {
     this.visible = false;
   }
 
-  deleteCity(city: any) {
-    this.cityService.delete(city.id).then(response => {
+  deleteCity(cityId: any) {
+    this.cityService.delete(cityId).then(response => {
       if (response.status === 200) {
         this.visible = false;
         this.getData();
@@ -188,6 +188,31 @@ export class CityComponent implements OnInit {
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  confirmDelete(event: Event, cityId: any) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'silmek istediğinize emin misiniz!',
+      header: 'Danger Zone',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'İptal',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Evet',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.deleteCity(cityId);
+      },
+      reject: () => {
+      },
+    });
   }
 
   editCity(city: any) {

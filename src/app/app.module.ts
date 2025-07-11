@@ -33,18 +33,19 @@ import {CalismalarComponent} from './Calismalar/calismalar.component';
 import {Ripple} from 'primeng/ripple';
 import {TabPanel} from 'primeng/tabview';
 import {Textarea} from 'primeng/textarea';
-import { CityComponent } from './city/city.component';
-import { AddressComponent } from './address/address.component';
-import { PersonelComponent } from './personel/personel.component';
-import { UnitComponent } from './unit/unit.component';
-import { ReportComponent } from './report/report.component';
-import { EducationComponent } from './education/education.component';
+import {CityComponent} from './city/city.component';
+import {AddressComponent} from './address/address.component';
+import {PersonelComponent} from './personel/personel.component';
+import {UnitComponent} from './unit/unit.component';
+import {ReportComponent} from './report/report.component';
+import {EducationComponent} from './education/education.component';
 import {ImageModule} from 'primeng/image';
-import {StyleClassModule} from 'primeng/styleclass';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DropdownModule} from 'primeng/dropdown';
-import { MainComponent } from './main/main.component';
-import {Splitter, SplitterModule} from 'primeng/splitter';
+import {MainComponent} from './main/main.component';
+import {SplitterModule} from 'primeng/splitter';
+import {ConfirmationService} from 'primeng/api';
+import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -92,9 +93,11 @@ import {Splitter, SplitterModule} from 'primeng/splitter';
     TabsModule,
     SplitterModule,
     ChartModule,
+    ConfirmDialogModule,
   ],
   providers: [
     MessageService,
+    ConfirmationService,
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

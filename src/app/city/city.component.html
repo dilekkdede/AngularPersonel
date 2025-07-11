@@ -53,7 +53,7 @@
         <td>{{ city.createDate | date: 'MM/dd/yyyy HH:mm' }}</td>
 
         <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-trash" (click)="deleteCity(city)" severity="danger"
+          <p-button icon="pi pi-trash" (click)="confirmDelete($event,city.id)" severity="danger"
                     rounded title="Sil"/>
         </td>
 

@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
       labels: labels,
       datasets: [
         {
-          label: 'Personel Sayısı',
+          label: 'Personel Sayısı' ,
           data: data,
           backgroundColor: [
             '#FF6384', // Pembe

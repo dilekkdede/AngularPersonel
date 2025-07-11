@@ -1,4 +1,5 @@
 <p-toast/>
+<p-confirmDialog></p-confirmDialog>
 <div class="header" style="color:darkblue">
   BİRİM LİSTESİ
   <p-button icon="pi pi-plus" title="Yeni Kayıt" [rounded]="true" [text]="true" (click)="showDialog()" severity="info"/>
@@ -53,7 +54,7 @@
         <td>{{ unit.createDate | date: 'MM/dd/yyyy HH:mm'}}</td>
 
         <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-trash" (click)="deleteUnit(unit)" severity="danger"
+          <p-button icon="pi pi-trash" (click)="confirmDelete($event,unit.id)" severity="danger"
                     rounded title="Sil"/>
         </td>
 

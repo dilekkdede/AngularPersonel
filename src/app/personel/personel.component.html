@@ -1,4 +1,5 @@
 <p-toast/>
+<p-confirmDialog></p-confirmDialog>
 <div class="header" style="color:darkblue">
   PERSONEL LİSTESİ
   <p-button icon="pi pi-plus" title="Yeni Kayıt" [rounded]="true" [text]="true" (click)="showDialog()" severity="info"/>
@@ -95,9 +96,9 @@
 
       </p-tablist>
       <p-tabpanels>
-          <p class="m-0">
-            DENEME
-          </p>
+        <p class="m-0">
+          DENEME
+        </p>
 
 
       </p-tabpanels>
@@ -142,7 +143,7 @@
           <td>{{ personel.unit?.code }}</td>
           <td>{{ personel.birthDate | date: 'MM/dd/yyyy' }}</td>
           <td>
-            <p-button [style]="{ marginRight:'0.5rem'}" icon="pi pi-trash" (click)="deletePerson(personel)"
+            <p-button [style]="{ marginRight:'0.5rem'}" icon="pi pi-trash" (click)="confirmDelete($event,personel.id)"
                       severity="danger"
                       rounded title="Sil"/>
             <p-button [style]="{ marginRight:'0.5rem'}" icon="pi pi-pencil" (click)="edit(personel)"

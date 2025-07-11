@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PersonelService} from '../services/personel.service';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {CityService} from '../services/city.service';
 import {UnitService} from '../services/unit.service';
 
@@ -115,7 +115,11 @@ export class PersonelComponent implements OnInit {
   ];
 
 
-  constructor(private personelService: PersonelService, private messageService: MessageService, private cityService: CityService, private unitService: UnitService) {
+  constructor(private personelService: PersonelService,
+              private messageService: MessageService,
+              private cityService: CityService,
+              private unitService: UnitService,
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -273,8 +277,8 @@ export class PersonelComponent implements OnInit {
   }
 
 
-  deletePerson(personel: any) {
-    this.personelService.delete(personel.id).then(response => {
+  deletePerson(personId: any) {
+    this.personelService.delete(personId).then(response => {
       if (response.status === 200) {
         this.visible = false;
         this.getData();
@@ -288,6 +292,31 @@ export class PersonelComponent implements OnInit {
       console.log(error);
     })
 
+  }
+
+  confirmDelete(event: Event, personId: any) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'silmek istediğinize emin misiniz!',
+      header: 'Danger Zone',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'İptal',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Evet',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.deletePerson(personId)
+      },
+      reject: () => {
+      },
+    });
   }
 
 }
