@@ -179,9 +179,6 @@ export class PersonelComponent implements OnInit {
       "description": this.personDescription,
       "bolum": this.personBolum,
       "birthDate": this.personBirthDay,
-      "adres": {
-        "description": this.personAdres_id,
-      },
       "city": {
         "id": this.personCity_id,
       },
