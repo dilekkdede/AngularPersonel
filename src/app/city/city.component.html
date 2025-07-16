@@ -30,39 +30,42 @@
 </div>
 
 <div class="tablo">
-  <p-table
-    [value]="sehirler"
-    [paginator]="true"
-    [rows]="10"
-    [tableStyle]="{ 'min-width': '100rem' }"
-    [rowsPerPageOptions]="[2, 4, 8]"
-  >
-    <ng-template #header>
-      <tr>
-        <th style="width:25%">Şehir</th>
-        <th style="width:25%">Kod</th>
-        <th style="width:25%">Durum</th>
-        <th style="width:25%">Oluşturma Tarihi</th>
-      </tr>
-    </ng-template>
-    <ng-template #body let-city>
-      <tr>
-        <td>{{ city.name }}</td>
-        <td>{{ city.code }}</td>
-        <td>{{ city.status }}</td>
-        <td>{{ city.createDate | date: 'MM/dd/yyyy HH:mm' }}</td>
+  <p-scrollpanel [style]="{ width: '100%', height: '550px' }">
 
-        <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-trash" (click)="confirmDelete($event,city.id)" severity="danger"
-                    rounded title="Sil"/>
-        </td>
+    <p-table
+      [value]="sehirler"
+      [paginator]="true"
+      [rows]="10"
+      [tableStyle]="{ 'min-width': '100rem' }"
+      [rowsPerPageOptions]="[2, 4, 8]"
+    >
+      <ng-template #header>
+        <tr>
+          <th style="width:25%">Şehir</th>
+          <th style="width:25%">Kod</th>
+          <th style="width:25%">Durum</th>
+          <th style="width:25%">Oluşturma Tarihi</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-city>
+        <tr>
+          <td>{{ city.name }}</td>
+          <td>{{ city.code }}</td>
+          <td>{{ city.status }}</td>
+          <td>{{ city.createDate | date: 'MM/dd/yyyy HH:mm' }}</td>
 
-        <td>
-          <p-button icon="pi pi-pencil" (click)="editCity(city)" severity="info" rounded
-                    title="Düzenle"/>
-        </td>
+          <td style="padding-left: 3px; padding-right:5px">
+            <p-button icon="pi pi-trash" (click)="confirmDelete($event,city.id)" severity="danger"
+                      rounded title="Sil"/>
+          </td>
 
-      </tr>
-    </ng-template>
-  </p-table>
+          <td>
+            <p-button icon="pi pi-pencil" (click)="editCity(city)" severity="info" rounded
+                      title="Düzenle"/>
+          </td>
+
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-scrollpanel>
 </div>

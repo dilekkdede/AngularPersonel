@@ -85,12 +85,11 @@ import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
     InputMask,
     FileUpload,
     Ripple,
-    TabPanel,
     Textarea,
     ImageModule,
     ScrollPanelModule,
     DropdownModule,
-    TabsModule,
+
     SplitterModule,
     ChartModule,
     ConfirmDialogModule,
