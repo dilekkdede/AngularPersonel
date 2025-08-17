@@ -1,5 +1,5 @@
 <div>
-  <p-button icon="pi pi-plus" label="Yeni Adres" [rounded]="true" [text]="true"
+  <p-button icon="pi pi-plus" label="YENI" [rounded]="true" [text]="true"
             (click)="showDialogAdres()" severity="info"/>
 
   <p-dialog header="Adres" [modal]="true" [(visible)]="adresDialogVisible"
@@ -27,7 +27,6 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Açıklama</th>
-        <th>Oluşturma Tarihi</th>
         <th>İşlem</th>
       </tr>
     </ng-template>
@@ -35,7 +34,6 @@
     <ng-template pTemplate="body" let-adres>
       <tr>
         <td>{{ adres.description }}</td>
-        <td>{{ adres.createDate | date: 'dd/MM/yyyy HH:mm' }}</td>
         <td>
           <p-button icon="pi pi-pencil" (click)="editAdres(adres)" severity="info" rounded title="Düzenle"
                     [style]="{ marginRight:'0.5rem'}"/>

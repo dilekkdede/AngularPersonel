@@ -8,89 +8,76 @@
   <p-dialog header="Personel Ekle" [modal]="true" [(visible)]="visible"
             [baseZIndex]="1000"
             [style]="{ width: '50rem', height: '45rem',color:'blue' }">
+
     <br/>
-    <div>
+    <p-inputgroup>
       <p-floatlabel>
         <input [style]="{ width: '100%' }" id="Adı" pInputText [(ngModel)]="personName"/>
         <label for="Adı">Adı</label>
       </p-floatlabel>
-    </div>
-    <br/>
-    <div>
+      <div style="padding: 0.2rem;"></div>
       <p-floatlabel>
         <input [style]="{ width: '100%' }" id="Soyad" pInputText [(ngModel)]="personLastName"/>
         <label for="Soyad">Soyadı</label>
       </p-floatlabel>
-    </div>
+    </p-inputgroup>
     <br/>
-    <div>
+
+    <p-inputgroup>
       <p-floatlabel>
         <input [style]="{ width: '100%' }" id="kullanici_adi" pInputText [(ngModel)]="personUserName"/>
         <label for="kullanici_adi">Kullanıcı Adı</label>
       </p-floatlabel>
-    </div>
-    <br/>
-    <div>
+      <div style="padding: 0.2rem;"></div>
       <p-floatlabel>
         <input [style]="{ width: '100%' }" id="aciklama" pInputText [(ngModel)]="personDescription"/>
         <label for="aciklama">Açıklama</label>
       </p-floatlabel>
-    </div>
+    </p-inputgroup>
     <br/>
-    <div>
+
+    <p-inputgroup>
       <p-floatlabel>
         <input [style]="{ width: '100%' }" id="bolum" pInputText [(ngModel)]="personBolum"/>
         <label for="bolum">Bölüm</label>
       </p-floatlabel>
-    </div>
-    <br/>
-    <div>
+      <div style="padding: 0.2rem;"></div>
       <p-floatlabel>
         <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="personBirthDay"
-                      [showIcon]="true" [showOnFocus]="false" id="birth_day"/>
+                      [showIcon]="true" [showOnFocus]="false" id="birth_day"></p-datepicker>
         <label [style]="{ fontSize:'0.5rem;'}" for="birth_day">Doğum Tarihi</label>
       </p-floatlabel>
-    </div>
+    </p-inputgroup>
     <br/>
 
-    <div *ngIf="!isEditButton">
-      <p-floatlabel>
-        <input [style]="{ width: '100%' }" id="adres_aciklama" pInputText [(ngModel)]="personAdresDescription"/>
-        <label for="adres_aciklama">Adres Açıklaması</label>
-      </p-floatlabel>
-    </div>
-
-    <br/>
-
-    <div>
+    <p-inputgroup>
       <p-floatlabel>
         <p-dropdown
+          id="city"
           [options]="cities"
           [(ngModel)]="personCity_id"
           optionLabel="name"
-
           optionValue="id"
-          placeholder="şehir seç"
+          placeholder=""
           [style]="{ width: '100%' }"
         ></p-dropdown>
-
+        <label for="city">Şehir</label>
       </p-floatlabel>
-    </div>
+      <div style="padding: 0.2rem;"></div>
+      <p-floatlabel>
+        <p-dropdown
+          id="unit"
+          [options]="units"
+          [(ngModel)]="personUnit_id"
+          optionLabel="code"
+          optionValue="id"
+          placeholder=""
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+        <label for="unit">Birim</label>
+      </p-floatlabel>
+    </p-inputgroup>
     <br/>
-
-    <p-dropdown
-      [options]="units"
-      [(ngModel)]="personUnit_id"
-      optionLabel="code"
-      optionValue="id"
-      placeholder="Birim Seç"
-      [style]="{ width: '100%' }"
-    />
-
-
-    <br/>
-    <br/>
-
 
     <p-tabs *ngIf="isEditButton" value="0">
       <p-tablist>
@@ -115,12 +102,9 @@
       <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
       <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="save() ">KAYDET</p-button>
       <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updatePerson()"> GÜNCELLE</p-button>
-
     </div>
 
   </p-dialog>
-
-
 </div>
 
 
