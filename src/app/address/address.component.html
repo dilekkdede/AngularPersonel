@@ -39,7 +39,7 @@
         <td>
           <p-button icon="pi pi-pencil" (click)="editAdres(adres)" severity="info" rounded title="Düzenle"
                     [style]="{ marginRight:'0.5rem'}"/>
-          <p-button icon="pi pi-trash" (click)="confirmDelete2($event, adres.id)" severity="danger" rounded
+          <p-button icon="pi pi-trash" (click)="deleteAdres(adres.id)" severity="danger" rounded
                     title="Sil"/>
         </td>
       </tr>

@@ -4,6 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CityService} from '../services/city.service';
 import {UnitService} from '../services/unit.service';
 import {AddressService} from '../services/address.service';
+import {ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'app-personel',
@@ -26,6 +27,7 @@ export class PersonelComponent implements OnInit {
   personBolum: any = null;
   personBirthDay: any = null;
   personAdres_id: any = null;
+  personContact_id: any = null;
   personCity_id: any = null;
   personUnit_id: any = null;
   personAdresDescription: string | null = null;
@@ -36,13 +38,16 @@ export class PersonelComponent implements OnInit {
   cityId: any = null;
   adresler: any = [];
 
+  contacts: any = [];
+
 
   constructor(private personelService: PersonelService,
               private messageService: MessageService,
               private cityService: CityService,
               private unitService: UnitService,
               private confirmationService: ConfirmationService,
-              private addressService: AddressService,) {
+              private addressService: AddressService,
+              private contactService: ContactService,) {
   }
 
   ngOnInit(): void {
@@ -66,13 +71,9 @@ export class PersonelComponent implements OnInit {
   }
 
 
-
-
   cancel() {
     this.visible = false;
   }
-
-
 
 
   getData() {
@@ -91,15 +92,6 @@ export class PersonelComponent implements OnInit {
   getCity() {
     this.cityService.findAll().then(response => {
       this.cities = response;
-    });
-  }
-
-  getAdres(id: any) {
-    this.addressService.findByPersonelId(id).then(response => {
-      this.adresler = response;
-      console.log('Adresler:', this.adresler);
-    }).catch(error => {
-      console.error('Adresler yüklenirken hata:', error);
     });
   }
 
@@ -144,7 +136,6 @@ export class PersonelComponent implements OnInit {
   edit(personel: any) {
     this.isEditButton = true;
     this.visible = true;
-    this.getAdres(personel.id);
     this.personId = personel.id;
     this.personName = personel.firstName;
     this.personLastName = personel.lastName;
@@ -153,6 +144,7 @@ export class PersonelComponent implements OnInit {
     this.personBolum = personel.bolum;
     this.personBirthDay = new Date(personel.birthDate);
     this.personAdres_id = personel.adres?.id;
+    this.personContact_id = personel.contact?.id;
     this.personAdresDescription = personel.adres?.description || '';
     this.personCity_id = personel.city?.id;
     this.personUnit_id = personel.unit?.id;
@@ -174,6 +166,7 @@ export class PersonelComponent implements OnInit {
         id: this.personAdres_id,
         description: this.personAdresDescription
       },
+
       city: {id: this.personCity_id},
       unit: {id: this.personUnit_id}
     };
@@ -221,8 +214,6 @@ export class PersonelComponent implements OnInit {
   }
 
 
-
-
   confirmDelete(event: Event, personId: any) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
@@ -248,7 +239,6 @@ export class PersonelComponent implements OnInit {
     });
     console.log("çalıştı");
   }
-
 
 
 }

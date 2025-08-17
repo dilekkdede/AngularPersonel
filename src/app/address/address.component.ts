@@ -1,6 +1,7 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AddressService} from '../services/address.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Event} from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -8,9 +9,8 @@ import {ConfirmationService, MessageService} from 'primeng/api';
   templateUrl: './address.component.html',
   styleUrl: './address.component.css'
 })
-export class AddressComponent implements OnChanges{
-
-  @Input() personId!: number;
+export class AddressComponent implements OnInit {
+  @Input({required: true}) personId!: any;
 
   addressList: any[] = [];
 
@@ -24,12 +24,11 @@ export class AddressComponent implements OnChanges{
     private addressService: AddressService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-  ) {}
+  ) {
+  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['personId'] && this.personId) {
-      this.getAdres(this.personId);
-    }
+  ngOnInit(): void {
+    this.getAdres(this.personId);
   }
 
   getAdres(id: number) {
@@ -99,16 +98,16 @@ export class AddressComponent implements OnChanges{
     }).catch(error => console.log(error));
   }
 
-  confirmDelete2(event: Event, adresId: number) {
+  confirmDeleteAddress(event: Event, adresId: number) {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
+      //target: event.target as EventTarget,
       message: 'Silmek istediğinize emin misiniz?',
       header: 'Uyarı',
       icon: 'pi pi-info-circle',
       acceptLabel: 'Evet',
       rejectLabel: 'İptal',
-      acceptButtonProps: { severity: 'danger' },
-      rejectButtonProps: { severity: 'secondary', outlined: true },
+      acceptButtonProps: {severity: 'danger'},
+      rejectButtonProps: {severity: 'secondary', outlined: true},
       accept: () => this.deleteAdres(adresId)
     });
   }
@@ -125,5 +124,6 @@ export class AddressComponent implements OnChanges{
       }
     }).catch(error => console.log(error));
   }
+
 
 }

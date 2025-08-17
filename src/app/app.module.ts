@@ -46,6 +46,7 @@ import {MainComponent} from './main/main.component';
 import {SplitterModule} from 'primeng/splitter';
 import {ConfirmationService} from 'primeng/api';
 import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
     ReportComponent,
     EducationComponent,
     MainComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
