@@ -3,6 +3,7 @@ import {PersonelService} from '../services/personel.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {CityService} from '../services/city.service';
 import {UnitService} from '../services/unit.service';
+import {AddressService} from '../services/address.service';
 
 @Component({
   selector: 'app-personel',
@@ -14,6 +15,8 @@ export class PersonelComponent implements OnInit {
 
   personeller: any = [];
   visible: boolean = false;
+
+
   isEditButton: boolean = false;
   personId: any = null;
   personName: any = null;
@@ -31,13 +34,15 @@ export class PersonelComponent implements OnInit {
   cities: any[] = [];
   units: any[] = [];
   cityId: any = null;
+  adresler: any = [];
 
 
   constructor(private personelService: PersonelService,
               private messageService: MessageService,
               private cityService: CityService,
               private unitService: UnitService,
-              private confirmationService: ConfirmationService) {
+              private confirmationService: ConfirmationService,
+              private addressService: AddressService,) {
   }
 
   ngOnInit(): void {
@@ -61,18 +66,20 @@ export class PersonelComponent implements OnInit {
   }
 
 
+
+
   cancel() {
     this.visible = false;
   }
 
 
+
+
   getData() {
     this.personelService.findAll().then(response => {
-      console.log('Gelen veriler:', response);
 
       this.personeller = response;
     });
-    console.log(this.personeller);
   }
 
   getUnits() {
@@ -87,6 +94,16 @@ export class PersonelComponent implements OnInit {
     });
   }
 
+  getAdres(id: any) {
+    this.addressService.findByPersonelId(id).then(response => {
+      this.adresler = response;
+      console.log('Adresler:', this.adresler);
+    }).catch(error => {
+      console.error('Adresler yüklenirken hata:', error);
+    });
+  }
+
+
   save() {
     const personel = {
       id: null,
@@ -96,8 +113,8 @@ export class PersonelComponent implements OnInit {
       description: this.personDescription,
       bolum: this.personBolum,
       birthDate: this.personBirthDay,
-      city: { id: this.personCity_id },
-      unit: { id: this.personUnit_id },
+      city: {id: this.personCity_id},
+      unit: {id: this.personUnit_id},
       adres: {  // adres bilgisi eklendi
         description: this.personAdresDescription
       }
@@ -124,10 +141,10 @@ export class PersonelComponent implements OnInit {
     });
   }
 
-
   edit(personel: any) {
     this.isEditButton = true;
     this.visible = true;
+    this.getAdres(personel.id);
     this.personId = personel.id;
     this.personName = personel.firstName;
     this.personLastName = personel.lastName;
@@ -140,6 +157,7 @@ export class PersonelComponent implements OnInit {
     this.personCity_id = personel.city?.id;
     this.personUnit_id = personel.unit?.id;
   }
+
 
   updatePerson() {
     this.visible = true;
@@ -156,8 +174,8 @@ export class PersonelComponent implements OnInit {
         id: this.personAdres_id,
         description: this.personAdresDescription
       },
-      city: { id: this.personCity_id },
-      unit: { id: this.personUnit_id }
+      city: {id: this.personCity_id},
+      unit: {id: this.personUnit_id}
     };
 
     this.personelService.update(this.personId, personel)
@@ -202,6 +220,9 @@ export class PersonelComponent implements OnInit {
 
   }
 
+
+
+
   confirmDelete(event: Event, personId: any) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
@@ -225,7 +246,9 @@ export class PersonelComponent implements OnInit {
       reject: () => {
       },
     });
+    console.log("çalıştı");
   }
+
 
 
 }

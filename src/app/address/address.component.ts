@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {AddressService} from '../services/address.service';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-address',
@@ -6,6 +8,122 @@ import { Component } from '@angular/core';
   templateUrl: './address.component.html',
   styleUrl: './address.component.css'
 })
-export class AddressComponent {
+export class AddressComponent implements OnChanges{
+
+  @Input() personId!: number;
+
+  addressList: any[] = [];
+
+  isEditButton: boolean = false;
+  adresDialogVisible: boolean = false;
+
+  adresId: number | null = null;
+  adresDescription: string | null = null;
+
+  constructor(
+    private addressService: AddressService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['personId'] && this.personId) {
+      this.getAdres(this.personId);
+    }
+  }
+
+  getAdres(id: number) {
+    this.addressService.findByPersonelId(id).then(response => {
+      this.addressList = response;
+    }).catch(error => {
+      console.error('Adresler yüklenirken hata:', error);
+    });
+  }
+
+  showDialogAdres() {
+    this.isEditButton = false;
+    this.adresDialogVisible = true;
+    this.adresDescription = null;
+    this.adresId = null;
+  }
+
+  cancelAdres() {
+    this.adresDialogVisible = false;
+  }
+
+
+  saveAdres() {
+    const adres = {
+      id: null,
+      description: this.adresDescription,
+      personelId: this.personId,
+    };
+
+    this.addressService.save(adres).then(response => {
+      if (response.status === 201) {
+        this.adresDialogVisible = false;
+        this.getAdres(this.personId);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Adres başarıyla eklendi'
+        });
+      }
+    }).catch(error => console.log(error));
+  }
+
+  editAdres(adres: any) {
+    this.isEditButton = true;
+    this.adresDialogVisible = true;
+    this.adresId = adres.id;
+    this.adresDescription = adres.description;
+  }
+
+  updateAdres() {
+    const adres = {
+      id: this.adresId,
+      description: this.adresDescription,
+      personelId: this.personId,
+    };
+
+    this.addressService.update(this.adresId!, adres).then(response => {
+      if (response.status === 200) {
+        this.adresDialogVisible = false;
+        this.getAdres(this.personId);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Adres başarıyla güncellendi'
+        });
+      }
+    }).catch(error => console.log(error));
+  }
+
+  confirmDelete2(event: Event, adresId: number) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Silmek istediğinize emin misiniz?',
+      header: 'Uyarı',
+      icon: 'pi pi-info-circle',
+      acceptLabel: 'Evet',
+      rejectLabel: 'İptal',
+      acceptButtonProps: { severity: 'danger' },
+      rejectButtonProps: { severity: 'secondary', outlined: true },
+      accept: () => this.deleteAdres(adresId)
+    });
+  }
+
+  deleteAdres(adresId: number) {
+    this.addressService.delete(adresId).then(response => {
+      if (response.status === 200) {
+        this.getAdres(this.personId);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: 'Adres silindi'
+        });
+      }
+    }).catch(error => console.log(error));
+  }
 
 }
