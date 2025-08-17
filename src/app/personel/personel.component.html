@@ -30,22 +30,8 @@
       </p-floatlabel>
       <div style="padding: 0.2rem;"></div>
       <p-floatlabel>
-        <input [style]="{ width: '100%' }" id="aciklama" pInputText [(ngModel)]="personDescription"/>
-        <label for="aciklama">Açıklama</label>
-      </p-floatlabel>
-    </p-inputgroup>
-    <br/>
-
-    <p-inputgroup>
-      <p-floatlabel>
         <input [style]="{ width: '100%' }" id="bolum" pInputText [(ngModel)]="personBolum"/>
         <label for="bolum">Bölüm</label>
-      </p-floatlabel>
-      <div style="padding: 0.2rem;"></div>
-      <p-floatlabel>
-        <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="personBirthDay"
-                      [showIcon]="true" [showOnFocus]="false" id="birth_day"></p-datepicker>
-        <label [style]="{ fontSize:'0.5rem;'}" for="birth_day">Doğum Tarihi</label>
       </p-floatlabel>
     </p-inputgroup>
     <br/>
@@ -78,6 +64,21 @@
       </p-floatlabel>
     </p-inputgroup>
     <br/>
+    <div>
+      <p-floatlabel>
+        <p-datepicker id="birth" [style]="{ width: '100%'}" [(ngModel)]="personBirthDay"
+                      [showIcon]="true" [showOnFocus]="false"></p-datepicker>
+        <label for="birth">Doğum Tarihi</label>
+      </p-floatlabel>
+    </div>
+    <br/>
+    <p-inputgroup>
+      <p-floatlabel>
+        <textarea [style]="{ width: '100%'}" id="aciklama" rows="2" cols="30" pTextarea
+                  [(ngModel)]="personDescription"></textarea>
+        <label for="aciklama">Açıklama</label>
+      </p-floatlabel>
+    </p-inputgroup>
 
     <p-tabs *ngIf="isEditButton" value="0">
       <p-tablist>

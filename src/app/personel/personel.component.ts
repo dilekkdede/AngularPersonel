@@ -3,8 +3,6 @@ import {PersonelService} from '../services/personel.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {CityService} from '../services/city.service';
 import {UnitService} from '../services/unit.service';
-import {AddressService} from '../services/address.service';
-import {ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'app-personel',
@@ -16,8 +14,6 @@ export class PersonelComponent implements OnInit {
 
   personeller: any = [];
   visible: boolean = false;
-
-
   isEditButton: boolean = false;
   personId: any = null;
   personName: any = null;
@@ -31,23 +27,15 @@ export class PersonelComponent implements OnInit {
   personCity_id: any = null;
   personUnit_id: any = null;
   personAdresDescription: string | null = null;
-
-
   cities: any[] = [];
   units: any[] = [];
-  cityId: any = null;
-  adresler: any = [];
-
-  contacts: any = [];
 
 
   constructor(private personelService: PersonelService,
               private messageService: MessageService,
               private cityService: CityService,
               private unitService: UnitService,
-              private confirmationService: ConfirmationService,
-              private addressService: AddressService,
-              private contactService: ContactService,) {
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -78,7 +66,6 @@ export class PersonelComponent implements OnInit {
 
   getData() {
     this.personelService.findAll().then(response => {
-
       this.personeller = response;
     });
   }
@@ -237,7 +224,6 @@ export class PersonelComponent implements OnInit {
       reject: () => {
       },
     });
-    console.log("çalıştı");
   }
 
 

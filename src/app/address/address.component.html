@@ -5,12 +5,14 @@
   <p-dialog header="Adres" [modal]="true" [(visible)]="adresDialogVisible"
             [baseZIndex]="1000" [style]="{ width: '30rem'}">
 
-    <div>
+    <br/>
+    <p-inputgroup>
       <p-floatlabel>
-        <input id="adresDesc" pInputText [(ngModel)]="adresDescription" style="width: 100%"/>
-        <label for="adresDesc">Adres Açıklaması</label>
+        <textarea [style]="{ width: '100%'}" id="adress" rows="4" cols="30" pTextarea
+                  [(ngModel)]="adresDescription"></textarea>
+        <label for="adress">Adres Bilgisi</label>
       </p-floatlabel>
-    </div>
+    </p-inputgroup>
 
     <br/>
     <div style="text-align:right;">
