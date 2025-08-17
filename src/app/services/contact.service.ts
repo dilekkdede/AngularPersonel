@@ -29,11 +29,14 @@ export class ContactService {
   }
 
   async save(contact: any) {
-    return await axios.post(this.baseUrl + '/contact/save', contact);
+    const response = await axios.post(this.baseUrl + '/contact/save/', contact).then(function (response) {
+      return response.data;
+    })
+    return response;
   }
 
   async update(id: number, contact: any) {
-    const response = await axios.put(this.baseUrl + '/adres/update/' + id, contact).then(function (response) {
+    const response = await axios.put(this.baseUrl + '/contact/update/' + id, contact).then(function (response) {
       return response.data;
     })
     return response;

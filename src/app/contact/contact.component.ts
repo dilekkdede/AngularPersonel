@@ -37,10 +37,7 @@ export class ContactComponent implements OnInit {
 
   getContact(id: number) {
     this.contactService.findByIdPersonelContact(id).then(response => {
-      console.log(response);
       this.contactList = response;
-      console.log(this.contactList);
-
     }).catch(error => {
       console.error('Contacts yüklenirken hata:', error);
     });
@@ -52,14 +49,14 @@ export class ContactComponent implements OnInit {
   }
 
   saveContact() {
-    const contact = {
+    const dto = {
       id: null,
       contact: this.contactDescription,
       type: this.contactType,
       personelId: this.personId,
     }
 
-    this.contactService.save(contact).then(response => {
+    this.contactService.save(dto).then(response => {
       if (response.status == 201) {
         this.getContact(this.personId);
         this.contactDialogVisible = false;
@@ -85,15 +82,15 @@ export class ContactComponent implements OnInit {
 
   updateContact() {
 
-    const contact = {
+    const dto = {
       id: this.conactId,
       contact: this.contactDescription,
       type: this.contactType,
       personelId: this.personId,
     };
-
-    this.contactService.update(this.conactId!, contact).then(response => {
-      if (response.status === 200) {
+    console.log(dto);
+    this.contactService.update(this.conactId, dto).then(response => {
+      if (response.status == 200) {
         this.contactDialogVisible = false;
         this.getContact(this.personId);
         console.log("Veri güncellendi");
@@ -105,8 +102,6 @@ export class ContactComponent implements OnInit {
         });
       }
     }).catch(error => console.log(error));
-
-
   }
 
 
