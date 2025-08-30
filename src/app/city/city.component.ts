@@ -174,6 +174,7 @@ export class CityComponent implements OnInit {
   }
 
   deleteCity(cityId: any) {
+
     this.cityService.delete(cityId).then(response => {
       if (response.status === 200) {
         this.visible = false;
